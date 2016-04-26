@@ -1,0 +1,20 @@
+.metadata
+
+tmp/
+data/
+models/
+
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swm
+*.swn
+
+# Log files.
+logs/
+
+# Text files.
+*.txt 
+
+.DS_Store
