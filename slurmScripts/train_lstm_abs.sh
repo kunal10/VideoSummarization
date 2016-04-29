@@ -4,10 +4,10 @@
 #SBATCH -n 20
 #SBATCH -N 1
 #SBATCH -p gpu
-#SBATCH --time=00:10:00 
-#SBATCH --error=../logs/lstmMSEPredict10000.err 
-#SBATCH --output=../logs/lstmMSEPredict10000.out
-#SBATCH --job-name=EvalLstmMSE
+#SBATCH --time=6:00:00 
+#SBATCH --error=../logs/lstm_abs.err 
+#SBATCH --output=../logs/lstm_abs.out
+#SBATCH --job-name=LSTMAbs
 #SBATCH --mail-user=kunal.lad@utexas.edu
 #SBATCH --mail-type=all
 
@@ -18,7 +18,7 @@ echo "running on node $NODE_HOSTNAME"
 # cd to VideoSummarization directory.
 cd ..
 # Train BLSTM
-luajit predict.lua -model models/lstm_mse10000.t7 -output_file results/lstm_mse_predictions10000.txt 
+luajit lstm.lua -num_iterations 10000 -num_batches 200 -model_prefix models/lstm_abs  -train_data data/tvsum50/train_data200.t7 -train_targets data/tvsum50/train_data_labels200.t7 
 
 echo "\nFinished with exit code $? at: `date`"
 

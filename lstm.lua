@@ -61,8 +61,9 @@ rnn:remember('both')
 -- print(rnn)
 
 -- build criterion
+criterion = nn.SequencerCriterion(nn.MSECriterion())
 -- criterion = nn.SequencerCriterion(nn.AbsCriterion())
-criterion = nn.SequencerCriterion(nn.SmoothL1Criterion())
+-- criterion = nn.SequencerCriterion(nn.SmoothL1Criterion())
 
 -- Load inputs and targets
 inputs = torch.load(opt.train_data)
