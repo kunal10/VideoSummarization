@@ -56,9 +56,9 @@ for i = 1,testSize do
         err = err + batcherr
         writeToFile(predicted, targets[i][k])
         if (k == #(inputs[i])) then
-    	    file:write(string.format("%f,", predicted[1][1]))
-        else
     	    file:write(string.format("%f", predicted[1][1]))
+        else
+    	    file:write(string.format("%f,", predicted[1][1]))
         end 
 	print(string.format("Test Eg: %d Seq No: %d ; err = %f, avg err = %f ", i, k, err, err/(#targets[i])))
     end  
