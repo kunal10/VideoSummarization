@@ -4,7 +4,7 @@
 #SBATCH -n 20
 #SBATCH -N 1
 #SBATCH -p gpu
-#SBATCH --time=00:10:00 
+#SBATCH --time=01:15:00 
 #SBATCH --error=../logs/vgg.err 
 #SBATCH --output=../logs/vgg.out
 #SBATCH --job-name=VGG
@@ -18,7 +18,7 @@ echo "running on node $NODE_HOSTNAME"
 # cd to VideoSummarization directory.
 cd ..
 # Train BLSTM
-luajit trainVgg.lua -num_iterations 1000 -num_batches 200 -train_data data/tvsum50/train_data200.t7 -train_targets data/tvsum50/train_data_labels200.t7 
+luajit trainVgg.lua -num_iterations 10000 -num_batches 200 -train_data data/tvsum50/train_data200.t7 -train_targets data/tvsum50/train_data_labels200.t7 
 
 echo "\nFinished with exit code $? at: `date`"
 

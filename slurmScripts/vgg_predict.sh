@@ -4,10 +4,10 @@
 #SBATCH -n 20
 #SBATCH -N 1
 #SBATCH -p gpu
-#SBATCH --time=06:00:00 
-#SBATCH --error=../logs/blstm.err 
-#SBATCH --output=../logs/blstm.out
-#SBATCH --job-name=BLSTM
+#SBATCH --time=00:10:00 
+#SBATCH --error=../logs/vggPredict10000.err 
+#SBATCH --output=../logs/vggPredict10000.out
+#SBATCH --job-name=EvalVgg
 #SBATCH --mail-user=kunal.lad@utexas.edu
 #SBATCH --mail-type=all
 
@@ -17,8 +17,8 @@ echo "running on node $NODE_HOSTNAME"
 
 # cd to VideoSummarization directory.
 cd ..
-# Train BLSTM
-luajit blstm.lua -num_batches 200 -train_data data/tvsum50/train_data200.t7 -train_targets data/tvsum50/train_data_labels200.t7 
+
+luajit vggPredict.lua -model models/vgg10000.t7 -output_file results/vgg_predictions10000.txt 
 
 echo "\nFinished with exit code $? at: `date`"
 
